@@ -1,0 +1,23 @@
+{
+  "experiment": "E001 classical supervised baseline preparation",
+  "seed": 20260925,
+  "sample_sizes": {"train": 30000, "calibration": 10000, "evaluation": 10000},
+  "folds": {"train": [1, 2, 3], "calibration": [4], "evaluation": [0]},
+  "strata": ["fold", "country", "singleton_vs_positive", "cardinality_bucket"],
+  "cardinality_buckets": ["0", "1", "2", "3", "4", "5+"],
+  "candidate_generation": {
+    "country_equality": true,
+    "sources": [2, 3],
+    "channels": {
+      "name": {"analyzer": "char_wb", "ngram_range": [3, 5], "hash_features": 262144},
+      "address": {"analyzer": "char_wb", "ngram_range": [3, 3], "hash_features": 131072}
+    },
+    "top_k_retrieved_once": 20,
+    "derived_candidate_sets": [10, 20],
+    "auxiliary_partitioning": "matched auxiliaries inherit owner S1 fold; unmatched auxiliaries use deterministic hash fold; train pools folds 1-3"
+  },
+  "training_pairs": {"hard_negatives_per_s1_per_source": 15, "hard_negatives_per_s1_total": 30, "keep_all_surviving_positives": true, "selection_basis": "15-total ablation was rejected using fold-4 calibration only"},
+  "model": {"algorithm": "LightGBM", "version": "4.7.0", "dependency_policy": "stop before training if neither LightGBM nor XGBoost is installed"},
+  "threads": 6,
+  "duckdb_memory_limit": "3GB"
+}

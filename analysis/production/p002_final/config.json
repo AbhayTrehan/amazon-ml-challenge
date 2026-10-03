@@ -1,0 +1,21 @@
+{
+  "candidate_generator": "R006B selective character-TFIDF retrieval",
+  "country_equality": true,
+  "streams": ["S1 name -> S2 name", "S1 address -> S2 address", "S1 name -> S3 name", "S1 address -> S3 address"],
+  "posting_soft_budget": 20000,
+  "coarse_m": 800,
+  "retrieval_threads": 20,
+  "top_per_stream": 10,
+  "feature_count": 49,
+  "shortlist": "LightGBM rank <= 5 OR LightGBM score >= 0.05",
+  "xlmr_checkpoint": "analysis/experiments_v1/e005_xlmr_crossencoder/model/best_checkpoint",
+  "max_length": 104,
+  "precision": "bf16",
+  "gpu": "RTX A6000 only, explicit user override during production",
+  "xlmr_batch_size": 512,
+  "fusion": {"xlmr": 0.60, "lightgbm": 0.40},
+  "threshold": 0.51,
+  "decoder": "one-owner",
+  "owner_margin": 0.48,
+  "candidate_pairs_semantics": "final neural shortlist supplied to XLM-R"
+}

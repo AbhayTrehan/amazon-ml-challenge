@@ -1,0 +1,10 @@
+{
+  "experiment": "E004-lite K10 decode and GPU bundle",
+  "seed": 20260925,
+  "baseline_threshold": 0.78,
+  "baseline_expected": {"calibration_f05": 0.9237187372077086, "evaluation_f05": 0.9247151386297013},
+  "candidate_set": "E001 cached K10 only",
+  "hybrid_rule": "top5 plus LightGBM score >= 0.05",
+  "training_export_negatives": "up to 5 hardest cached K10 false pairs per S1 per source",
+  "constraints": ["no retrieval", "no model fitting", "no feature regeneration", "no network", "CPU only"]
+}

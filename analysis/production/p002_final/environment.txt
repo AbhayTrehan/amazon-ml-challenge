@@ -1,0 +1,11 @@
+python=3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]
+executable=/home/satvik/venvs/amazonml2026/bin/python
+platform=Linux-5.15.0-191-generic-x86_64-with-glibc2.35
+numpy=2.2.6
+pandas=2.3.3
+scipy=1.15.3
+sklearn=1.7.2
+lightgbm=4.7.0
+torch=2.11.0+cu128
+transformers=5.17.0
+duckdb=1.5.5

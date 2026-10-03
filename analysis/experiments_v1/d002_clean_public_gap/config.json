@@ -1,0 +1,13 @@
+{
+  "posting_budget": 20000,
+  "coarse_m": 800,
+  "top_per_stream": 10,
+  "feature_count": 49,
+  "shortlist": "rank<=5 OR lightgbm>=0.05",
+  "max_length": 104,
+  "fusion_xlmr": 0.6,
+  "fusion_lgbm": 0.4,
+  "threshold": 0.51,
+  "decoder": "one-owner",
+  "owner_margin": 0.48
+}

@@ -1,0 +1,16 @@
+hostname: sbilabwstsn
+python: 3.10.12
+venv: /home/satvik/venvs/amazonml2026
+torch: 2.11.0+cu128
+torch CUDA runtime: 12.8
+transformers: 5.17.0
+CUDA available: True
+selected physical GPU index: 1
+selected GPU UUID: GPU-f5f574b3-d0dc-fd72-5fd4-2d913d115b17
+selected GPU: NVIDIA RTX 6000 Ada Generation
+GPU inventory: 0, GPU-be9e124c-5a77-cc0f-586d-9bd963e58e98, NVIDIA RTX A6000, 49140 MiB, 595.91.07, 8.6
+1, GPU-f5f574b3-d0dc-fd72-5fd4-2d913d115b17, NVIDIA RTX 6000 Ada Generation, 49140 MiB, 595.91.07, 8.9
+CPU count: 40
+RAM: Mem:           125Gi       7.8Gi        12Gi       145Mi       105Gi       116Gi
+disk: Filesystem             Size  Used Avail Use% Mounted on
+/dev/mapper/vg0-lv--0   26T  9.8T   15T  41% /home

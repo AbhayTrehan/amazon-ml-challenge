@@ -1,0 +1,33 @@
+production_run: P001
+seed: 20260925
+test_dir: student_resource/dataset/test
+candidate_generation:
+  country_block: exact_string_equality_open_set
+  sources: [2, 3]
+  channels: [name, address]
+  retrieval_top_n: 20
+  final_k: 10
+  query_shard_size: 20000
+  sparse_threads: 32
+lightgbm:
+  model: analysis/experiments_v1/e001_classical_baseline/model/lightgbm_model.txt
+  feature_schema: analysis/experiments_v1/e001_classical_baseline/model/model_config.json
+neural_shortlist:
+  rank_max: 5
+  score_min: 0.05
+xlmr:
+  checkpoint: analysis/experiments_v1/e005_xlmr_crossencoder/model/best_checkpoint
+  base_model: FacebookAI/xlm-roberta-base
+  revision: e73636d4f797dec63c3081bb6ed5c7b0bb3f2089
+  checkpoint_sha256: e7079b798b866b27116a0059c9c7cf1531817e42659ec0c9442654aee5d0c462
+  max_length: 104
+  batch_size: 256
+  precision: bf16
+  attention: sdpa
+decoder:
+  neural_weight: 0.60
+  lightgbm_weight: 0.40
+  threshold: 0.51
+  one_owner: true
+  owner_margin: 0.48
+

@@ -1,0 +1,47 @@
+{
+  "experiment": "E008",
+  "seed": 20260925,
+  "cohort_seed": "e008-final-cohort-20260925",
+  "augmentation_seed": "e008-hard-positive-augmentation-20260925",
+  "train_folds": [0, 1, 2, 3],
+  "calibration_ids": "historical E001 fold4 calibration 10k",
+  "validation": "all fold4 excluding historical calibration 10k",
+  "cohort": {"US": 100000, "India": 100000},
+  "blocker": {
+    "same_country": true,
+    "posting_budget": 20000,
+    "coarse_m": 800,
+    "exact_rerank_topk": 10,
+    "streams": ["S2_name", "S2_address", "S3_name", "S3_address"]
+  },
+  "lightgbm": {
+    "feature_count": 49,
+    "feature_schema": "E001 unchanged",
+    "max_false_per_s1": 10,
+    "hyperparameters": "E001 unchanged"
+  },
+  "xlmr": {
+    "model_id": "FacebookAI/xlm-roberta-base",
+    "revision": "e73636d4f797dec63c3081bb6ed5c7b0bb3f2089",
+    "max_length": 160,
+    "frozen_embeddings": true,
+    "frozen_layers": [0, 1, 2, 3, 4, 5],
+    "trainable_layers": [6, 7, 8, 9, 10, 11],
+    "learning_rate": 0.00002,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "dropout": "historical model default",
+    "max_epochs": 3,
+    "precision": "bf16",
+    "loss": "per-S1 normalized weighted binary cross entropy"
+  },
+  "shortlist": "LightGBM rank <= 5 OR score >= 0.05",
+  "pair_stacker": "L2 logistic regression C=1.0",
+  "owner_calibrator": "L2 logistic regression C=1.0",
+  "decoder": "plugin_expected_F0.5",
+  "production_gate": {
+    "minimum_delta_macro_f05": 0.001,
+    "minimum_precision": 0.995,
+    "minimum_india_delta": -0.001
+  }
+}

@@ -1,0 +1,35 @@
+experiment: E005
+seed: 20260925
+model_id: FacebookAI/xlm-roberta-base
+model_license: MIT
+missing_address: "[missing]"
+shortlist:
+  rule: "lightgbm_rank_within_s1 <= 5 OR lightgbm_score >= 0.05"
+  rank_max: 5
+  score_min: 0.05
+tokenization:
+  sample_size: 100000
+  candidate_max_lengths: [64, 80, 88, 96, 104, 112, 128, 160, 192, 256]
+  target_coverage: 0.99
+training:
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  max_epochs: 2
+  max_grad_norm: 1.0
+  target_effective_batch_size: 64
+  physical_batch_size: 64
+  gradient_accumulation_steps: 1
+  num_workers: 2
+  precision: bf16
+  dynamic_padding: true
+  full_finetuning: true
+inference:
+  batch_size: 256
+selection:
+  checkpoint_role: calibration_fold_4_only
+  evaluation_role: fold_0_once_after_freeze
+projection:
+  test_s1: 1732544
+  mean_k10_candidates_per_s1: 37.85
+  mean_shortlist_candidates_per_s1: 6.19
